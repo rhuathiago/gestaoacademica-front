@@ -1,0 +1,75 @@
+<!--<div class="table-responsive">-->
+<!--<table mat-table [dataSource]="usuarios" class="mat-elevation-z8">-->
+
+<!--  <tr mat-header-row *matHeaderRowDef="['matricula', 'nome','tipoDeUsuario', 'acoes']"></tr>-->
+<!--  <tr mat-row *matRowDef="let row; columns: ['matricula', 'nome', 'tipoDeUsuario', 'acoes'];"></tr>-->
+
+<!--  <ng-container matColumnDef="matricula">-->
+<!--    <th mat-header-cell *matHeaderCellDef> Matrícula </th>-->
+<!--    <td mat-cell *matCellDef="let usuario"> {{usuario.matricula}} </td>-->
+<!--  </ng-container>-->
+
+<!--  <ng-container matColumnDef="nome">-->
+<!--    <th mat-header-cell *matHeaderCellDef> Nome </th>-->
+<!--    <td mat-cell *matCellDef="let usuario"> {{usuario.nome}} </td>-->
+<!--  </ng-container>-->
+
+<!--  <ng-container matColumnDef="tipoDeUsuario">-->
+<!--    <th mat-header-cell *matHeaderCellDef> Tipo de Usuário </th>-->
+<!--    <td mat-cell *matCellDef="let usuario"> {{usuario.tipoDeUsuario}} </td>-->
+<!--  </ng-container>-->
+
+<!--  <ng-container matColumnDef="acoes">-->
+<!--    <th mat-header-cell *matHeaderCellDef></th>-->
+<!--    <td mat-cell *matCellDef="let usuario" class="actions-cell">-->
+<!--      <a [routerLink]="['/visualizar-usuario', usuario.id]" class="btn btn-secondary action-btn btn-sm">Visualizar</a>-->
+<!--      <a [routerLink]="['/atualizar-usuario', usuario.id]" class="btn btn-primary action-btn btn-sm">Atualizar</a>-->
+<!--      <button class="btn btn-danger action-btn btn-sm" (click)="deletarUsuario(usuario.id)">-->
+<!--        Deletar-->
+<!--      </button>-->
+<!--    </td>-->
+
+<!--  </ng-container>-->
+
+<!--</table>-->
+<!--</div>-->
+
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Matrícula</th>
+      <th>Nome</th>
+      <th>Tipo de Usuário</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let usuario of pageSlice">
+      <td>{{ usuario.matricula }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.tipoDeUsuario }}</td>
+      <td class="actions-cell">
+        <a [routerLink]="['/visualizar-usuario', usuario.id]" class="btn btn-secondary action-btn btn-sm">Visualizar</a>
+        <a [routerLink]="['/atualizar-usuario', usuario.id]" class="btn btn-primary action-btn btn-sm">Atualizar</a>
+        <button (click)="deletarUsuario(usuario.id)" *ngIf="usuario.id !== undefined"
+                class="btn btn-danger action-btn btn-sm">Deletar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="usuarios.length === 0">
+  <p>Nenhum usuário encontrado.</p>
+</div>
+
+<mat-paginator
+  [length]="this.usuarios.length"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10 ,15]"
+  [hidePageSize]="true"
+  (page)="onPageChange($event)"
+></mat-paginator>

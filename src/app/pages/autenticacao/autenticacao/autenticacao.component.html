@@ -1,0 +1,18 @@
+<div class="container mt-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mt-4 text-center">Universidade</h2>
+      <form (ngSubmit)="realizarLogin()">
+        <div class="form-group">
+          <label for="login">Login:</label>
+          <input type="text" class="form-control" id="login" name="login" [(ngModel)]="dadosAutenticacao.login" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="senha">Senha:</label>
+          <input type="password" class="form-control" id="senha" name="senha" [(ngModel)]="dadosAutenticacao.senha" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+    </div>
+  </div>
+</div>

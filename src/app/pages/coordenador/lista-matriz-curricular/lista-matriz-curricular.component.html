@@ -1,0 +1,40 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Curso</th>
+      <th>Disciplina ID</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let matrizCurricular of pageSlice">
+      <td>{{ matrizCurricular.curso }}</td>
+      <td>{{ matrizCurricular.disciplinaId }}</td>
+      <td class="actions-cell">
+        <a [routerLink]="['/visualizar-matriz-curricular', matrizCurricular.id]"
+           class="btn btn-secondary action-btn btn-sm">Visualizar</a>
+        <a [routerLink]="['/atualizar-matriz-curricular', matrizCurricular.id]"
+           class="btn btn-primary action-btn btn-sm"
+           *ngIf="autenticacaoService.temPermissao('ROLE_COORDENADOR')">Atualizar</a>
+        <button (click)="deletarMatrizCurricular(matrizCurricular.id)"
+                *ngIf="matrizCurricular.id !== undefined && autenticacaoService.temPermissao('ROLE_COORDENADOR')"
+                class="btn btn-danger action-btn btn-sm">Deletar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="matrizesCurriculares.length === 0">
+  <p>Nenhuma matriz curricular encontrada.</p>
+</div>
+
+<mat-paginator
+  [length]="this.matrizesCurriculares.length"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10 ,15]"
+  [hidePageSize]="true"
+  (page)="onPageChange($event)"
+></mat-paginator>

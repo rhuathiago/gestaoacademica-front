@@ -1,0 +1,38 @@
+/*!* Estilos da tabela *!*/
+/*.table-responsive {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  height: 90vh;*/
+/*}*/
+
+/*table {*/
+/*  width: 60%;*/
+/*  margin: 20px;*/
+/*}*/
+
+/*.mat-column-matricula,*/
+/*.mat-column-nome,*/
+/*.mat-column-tipoDeUsuario{*/
+/*  width: 22%; !* Aumenta a largura das colunas em telas maiores *!*/
+/*}*/
+
+/* Ajuste de tamanho dos botões em telas menores */
+@media (max-width: 768px) {
+  .action-btn {
+    font-size: 8px; /* Fonte menor em telas menores */
+    width: 20vw; /* Ajuste de largura responsiva */
+    padding: 2px 6px; /* Ajuste de padding em telas menores */
+  }
+
+  .actions-cell.flex-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+/*!* Adicione margem entre os botões em telas maiores *!*/
+/*@media (min-width: 769px) {*/
+/*  .action-btn {*/
+/*    margin-left: 5px;*/
+/*  }*/
+/*}*/

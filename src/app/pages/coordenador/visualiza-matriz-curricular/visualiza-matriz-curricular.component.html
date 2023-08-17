@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-center">Visualizar Matriz Curricular</h2>
+      <form>
+
+        <div class="mb-3 d-flex justify-content-center">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>ID</mat-label>
+            <input [(ngModel)]="matrizCurricular.id" [readonly]="true" matInput name="id" placeholder="123">
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-center">
+          <mat-form-field class="example-full-width mr-3" appearance="fill">
+            <mat-label>Curso</mat-label>
+            <input [(ngModel)]="matrizCurricular.curso" [readonly]="true" matInput name="curso"
+                   placeholder="Nome do Curso">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Disciplina ID</mat-label>
+            <input [(ngModel)]="matrizCurricular.disciplinaId" [readonly]="true" matInput name="disciplinaId"
+                   placeholder="123">
+          </mat-form-field>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

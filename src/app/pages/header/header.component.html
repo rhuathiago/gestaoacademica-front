@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Universidade</a>
+  <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+          data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+          *ngIf="autenticacaoService.temPermissao(['ROLE_COORDENADOR', 'ROLE_ALUNO', 'ROLE_PROFESSOR'])"
+          class="nav-link" href="/lista-matriz-curricular">Lista Matriz Curricular</a>
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="autenticacaoService.temPermissao('ROLE_COORDENADOR')"
+          class="nav-link" href="/cadastra-matriz-curricular">Adicionar Matriz Curricular</a>
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="autenticacaoService.temPermissao('ROLE_ADMINISTRADOR')"
+          class="nav-link" href="/lista-usuarios">Lista de usuários</a>
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="autenticacaoService.temPermissao('ROLE_ADMINISTRADOR')"
+          class="nav-link" href="/cadastra-usuarios">Adicionar usuário</a>
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="estaLogado()"
+          class="nav-link cursor-pointer" (click)="autenticacaoService.fazerLogout()">Sair</a>
+      </li>
+    </ul>
+  </div>
+</nav>
