@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AdministradorService} from "../administrador.service";
 import {ActivatedRoute} from "@angular/router";
-import {TipoDeUsuario} from "../../../model/enums/TipoDeUsuario";
-import {Usuario} from "../../../model/Usuario";
+import {TipoDeUsuario} from "../../../model/enums/tipo-de-usuario";
+import {Usuario} from "../../../model/usuario";
 
 @Component({
   selector: 'app-visualiza-usuario',
@@ -12,12 +12,9 @@ import {Usuario} from "../../../model/Usuario";
 export class VisualizaUsuarioComponent implements OnInit {
 
   usuario: Usuario = {
-    id: 0,
-    matricula: 0,
     nome: '',
     login: '',
     senha: '',
-    tipoDeUsuario: TipoDeUsuario.ADMINISTRADOR
   };
 
   constructor(private administradorService: AdministradorService,

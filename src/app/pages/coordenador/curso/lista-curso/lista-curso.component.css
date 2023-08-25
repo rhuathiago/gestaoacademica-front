@@ -1,6 +1,6 @@
 .action-btn {
   margin-right: 5px;
-  width: 80px;
+  /*width: 80px;*/
 }
 
 @media (max-width: 768px) {
@@ -8,6 +8,7 @@
     font-size: 8px;
     width: 20vw;
     padding: 2px 6px;
+    margin-right: 2px;
   }
 
   .actions-cell.flex-wrap {

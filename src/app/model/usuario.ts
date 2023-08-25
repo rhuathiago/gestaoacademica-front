@@ -1,4 +1,4 @@
-import {TipoDeUsuario} from "./enums/TipoDeUsuario";
+import {TipoDeUsuario} from "./enums/tipo-de-usuario";
 
 export class Usuario {
   id?: number;
@@ -7,6 +7,7 @@ export class Usuario {
   login: string;
   senha: string;
   tipoDeUsuario?: TipoDeUsuario;
+  curso?: string;
 
   constructor(id:number, nome: string, matricula: number, login: string,
               senha: string, tipoDeUsuario: TipoDeUsuario) {

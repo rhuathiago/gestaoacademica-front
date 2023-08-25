@@ -32,7 +32,7 @@ export class AutenticacaoService {
 
   fazerLogout() {
     localStorage.removeItem('authToken');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login'])
   }
 
   temPermissao(requiredRoles: string | string[]): boolean {
@@ -59,13 +59,28 @@ export class AutenticacaoService {
 
     if (token) {
       const usuariosRoles = this.getRolesToken(token);
+
       if (usuariosRoles.includes('ROLE_ADMINISTRADOR')) {
         return '/lista-usuarios';
-      } else if (usuariosRoles.some(role => ['ROLE_COORDENADOR', 'ROLE_PROFESSOR', 'ROLE_ALUNO'].includes(role))) {
+      } else if (usuariosRoles.includes('ROLE_COORDENADOR')) {
         return '/lista-matriz-curricular';
+      } else if (usuariosRoles.some(role => ['ROLE_ALUNO', 'ROLE_PROFESSOR'].includes(role))) {
+        return '/matriz-curricular';
+      } else {
+        return '/nao-autorizado'
       }
+
     }
 
+  }
+
+  getCursoAluno(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const tokenData: any = this.jwtHelper.decodeToken(token);
+      return tokenData.curso || null;
+    }
+    return null;
   }
 
 

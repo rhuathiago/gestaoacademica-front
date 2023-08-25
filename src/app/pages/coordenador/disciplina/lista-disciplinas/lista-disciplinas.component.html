@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <h2 class="mb-4 text-center">Disciplinas</h2>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Horas</th>
+            <th>Semestre</th>
+            <th>Ações</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let disciplina of pageSlice">
+            <td>{{ disciplina.nome }}</td>
+            <td>{{ disciplina.horas }}</td>
+            <td>{{ disciplina.semestre }}</td>
+            <td class="actions-cell">
+              <a [routerLink]="['/visualizar-disciplina', disciplina.id]"
+                 class="btn btn-secondary action-btn btn-sm">Visualizar</a>
+              <a [routerLink]="['/atualizar-disciplina', disciplina.id]"
+                 class="btn btn-primary action-btn btn-sm"
+                 *ngIf="autenticacaoService.temPermissao('ROLE_COORDENADOR')">Atualizar</a>
+              <button (click)="deletarDisciplina(disciplina.id)"
+                      *ngIf="disciplina.id !== undefined && autenticacaoService.temPermissao('ROLE_COORDENADOR')"
+                      class="btn btn-danger action-btn btn-sm">Deletar
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="disciplinas.length === 0">
+        <p>Nenhuma disciplina encontrada.</p>
+      </div>
+
+      <mat-paginator
+        [length]="this.disciplinas.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10 ,15]"
+        [hidePageSize]="true"
+        (page)="onPageChange($event)"
+      ></mat-paginator>
+    </div>
+  </div>
+</div>
+
+
+

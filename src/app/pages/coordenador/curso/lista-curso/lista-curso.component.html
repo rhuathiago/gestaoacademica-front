@@ -2,25 +2,23 @@
   <div class="row justify-content-center align-items-center">
     <div class="col-md-8">
       <div class="table-responsive">
-        <h2 class="mb-4 text-center">Usuários</h2>
+        <h2 class="mb-4 text-center">Cursos</h2>
         <table class="table table-striped">
           <thead>
           <tr>
-            <th>Matrícula</th>
             <th>Nome</th>
-            <th>Tipo de Usuário</th>
             <th>Ações</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let usuario of pageSlice">
-            <td>{{ usuario.matricula }}</td>
-            <td>{{ usuario.nome }}</td>
-            <td>{{ usuario.tipoDeUsuario }}</td>
+          <tr *ngFor="let curso of pageSlice">
+            <td>{{ curso.nome }}</td>
             <td class="actions-cell">
-              <a [routerLink]="['/visualizar-usuario', usuario.id]" class="btn btn-secondary action-btn btn-sm">Visualizar</a>
-              <a [routerLink]="['/atualizar-usuario', usuario.id]" class="btn btn-primary action-btn btn-sm">Atualizar</a>
-              <button (click)="deletarUsuario(usuario.id)" *ngIf="usuario.id !== undefined"
+              <a [routerLink]="['/atualizar-curso', curso.id]"
+                 class="btn btn-primary action-btn btn-sm"
+                 *ngIf="autenticacaoService.temPermissao('ROLE_COORDENADOR')">Atualizar</a>
+              <button (click)="deletarCurso(curso.id)"
+                      *ngIf="curso.id !== undefined && autenticacaoService.temPermissao('ROLE_COORDENADOR')"
                       class="btn btn-danger action-btn btn-sm">Deletar
               </button>
             </td>
@@ -28,13 +26,12 @@
           </tbody>
         </table>
       </div>
-
-      <div *ngIf="usuarios.length === 0">
-        <p>Nenhum usuário encontrado.</p>
+      <div *ngIf="cursos.length === 0">
+        <p>Nenhum curso encontrado.</p>
       </div>
 
       <mat-paginator
-        [length]="this.usuarios.length"
+        [length]="this.cursos.length"
         [pageSize]="10"
         [pageSizeOptions]="[5, 10 ,15]"
         [hidePageSize]="true"
@@ -43,3 +40,6 @@
     </div>
   </div>
 </div>
+
+
+

@@ -1,4 +1,4 @@
-<div class="container mt-5 pt-5">
+<div class="container mt-5 pt-5" *ngIf="!token; else mensagemBemVindo">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <h2 class="mt-4 text-center">Universidade</h2>
@@ -16,3 +16,9 @@
     </div>
   </div>
 </div>
+
+<ng-template #mensagemBemVindo>
+  <div class="text-center mt-5">
+    <h2>Bem-vindo à Universidade!</h2>
+  </div>
+</ng-template>

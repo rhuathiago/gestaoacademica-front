@@ -1,27 +1,47 @@
-# Gestaoacademica
+# Gestão Acadêmica
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
+Bem-vindo ao Frontend do meu projeto Gestão Acadêmica! Este é um projeto desenvolvido com Angular 12.
 
-## Development server
+## Pré-requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-## Code scaffolding
+- [Node.js](https://nodejs.org/pt-br/blog/release/v14.20.1) (versão 14.20.1)
+- [Angular CLI](https://v12.angular.io/cli) (versão 12.2.18)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instalação
 
-## Build
+1. **Clone o Repositório**: Comece clonando este repositório para a sua máquina local.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+git clone https://github.com/rhuathiago/gestaoacademica-front.git
+````
 
-## Running unit tests
+2. **Instale o Angular**: Caso não possua uma versão global do Angular, instale a versão 12.2.18 globalmente.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install -g @angular/cli@12.2.18
+````
 
-## Running end-to-end tests
+3. **Navegue para o Diretório do Projeto**: Entre no diretório do projeto clonado usando o seguinte comando:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+cd gestaoacademica
+````
 
-## Further help
+4. **Instale as Dependências**: Instale as dependências do projeto usando o npm com o seguinte comando:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm install
+````
+
+## Executando a aplicação
+Agora que todas as dependências estão instaladas, você pode rodar a aplicação localmente.
+
+1. **Iniciando o servidor**: Para iniciar o servidor, execute o seguinte comando:
+
+```bash
+ng serve
+````
+
+2. **Acessando a aplicação**: Abra o seu navegador e acesse http://localhost:4200/ para visualizar a aplicação.

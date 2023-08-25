@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CoordenadorService } from '../coordenador.service';
 import { PageEvent } from "@angular/material/paginator";
-import {MatrizCurricular} from "../../../model/MatrizCurricular";
-import {AutenticacaoService} from "../../autenticacao/autenticacao/autenticacao.service";
+import {MatrizCurricular} from "../../../../model/matriz-curricular";
+import {CoordenadorService} from "../../coordenador.service";
+import {AutenticacaoService} from "../../../autenticacao/autenticacao/autenticacao.service";
 
 @Component({
   selector: 'app-lista-matriz-curricular',
@@ -10,23 +10,9 @@ import {AutenticacaoService} from "../../autenticacao/autenticacao/autenticacao.
   styleUrls: ['./lista-matriz-curricular.component.css']
 })
 export class ListaMatrizCurricularComponent implements OnInit {
-  // matrizesCurriculares: MatrizCurricular[] = [];
   pageSlice: MatrizCurricular[] = [];
 
-  matrizesCurriculares: MatrizCurricular[] = [
-    {
-      curso: 'Engenharia',
-      disciplinaId: 1
-    },
-    {
-      curso: 'Engenharia',
-      disciplinaId: 1
-    },
-    {
-      curso: 'Engenharia',
-      disciplinaId: 1
-    }
-  ]
+  matrizesCurriculares: any[] = [];
 
   constructor(private coordenadorService: CoordenadorService,
               public autenticacaoService: AutenticacaoService) { }
@@ -49,9 +35,9 @@ export class ListaMatrizCurricularComponent implements OnInit {
       );
   }
 
-  deletarMatrizCurricular(id: number) {
-    if (confirm('Deseja realmente excluir esta matriz curricular?')) {
-      this.coordenadorService.excluirMatrizCurricular(id).subscribe(
+  deletarMatrizCurricular(curso: string) {
+    if (confirm(`Deseja realmente excluir a matriz curricular do curso "${curso}"?`)) {
+      this.coordenadorService.excluirMatrizCurricularPorCurso(curso).subscribe(
         () => {
           alert('Matriz curricular excluída com sucesso!');
           location.reload();

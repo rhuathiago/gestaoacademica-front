@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-center">Disciplina</h2>
+      <form>
+
+        <div class="mb-3 d-flex justify-content-center">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="disciplina.nome" [readonly]="true" matInput name="nome" placeholder="Cálculo">
+          </mat-form-field>
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+          <mat-form-field class="example-full-width mr-3" appearance="fill">
+            <mat-label>Horas</mat-label>
+            <input [(ngModel)]="disciplina.horas" [readonly]="true" matInput name="semestre" type="number">
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3 d-flex justify-content-center">
+        <mat-form-field class="example-full-width mr-3" appearance="fill">
+          <mat-label>Semestre</mat-label>
+          <input [(ngModel)]="disciplina.semestre" [readonly]="true" matInput name="tipoDeUsuario">
+        </mat-form-field>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

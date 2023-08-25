@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AutenticacaoService, DadosAutenticacao} from "./autenticacao.service";
 import {Router} from "@angular/router";
+import {NotificacaoService} from "../../../shared/notificacao.service";
 
 @Component({
   selector: 'app-autenticacao',
@@ -13,9 +14,11 @@ export class AutenticacaoComponent implements OnInit {
     login: '',
     senha: ''
   };
+  token = this.autenticacaoService.getToken();
 
   constructor(private autenticacaoService: AutenticacaoService,
-              private router: Router) { }
+              private router: Router,
+              private notificacaoService: NotificacaoService) { }
 
   ngOnInit(): void {
   }
@@ -26,11 +29,11 @@ export class AutenticacaoComponent implements OnInit {
         (response) => {
           localStorage.setItem('authToken', response.token);
           const redirectRoute = this.autenticacaoService.redirecionarUsuarios();
-          console.log(redirectRoute);
           this.router.navigate([redirectRoute]);
         },
         error => {
-          console.error('Erro ao efetuar login:', error);
+          this.notificacaoService.mostrarMensagemErro('Erro ao tentar fazer login!');
+          console.error(error);
         }
       );
   }

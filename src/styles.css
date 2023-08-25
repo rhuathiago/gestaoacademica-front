@@ -2,5 +2,25 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
 }
+
+.green-snackbar {
+  background: #71B371;
+  color: #FFFFFF;
+}
+.green-snackbar button {
+  background-color: #71B371;
+  color: #FFFFFF;
+  border: none;
+}
+.red-snackbar {
+  background: #CA5E58;
+  color: #FFFFFF;
+}
+.red-snackbar button {
+  background-color: #CA5E58;
+  color: #FFFFFF !important;
+  border: none;
+}
+

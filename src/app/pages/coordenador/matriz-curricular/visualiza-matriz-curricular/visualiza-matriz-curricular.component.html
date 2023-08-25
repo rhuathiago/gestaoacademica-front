@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <h2 class="mb-4 text-center" *ngIf="autenticacaoService.temPermissao('ROLE_COORDENADOR')">
+          {{cursoNome}}
+        </h2>
+        <h2 class="mb-4 text-center" *ngIf="autenticacaoService.temPermissao(['ROLE_ALUNO', 'ROLE_PROFESSOR'])">
+          {{cursoToken}}
+        </h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Horas</th>
+              <th>Semestre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let disciplina of disciplinas">
+              <td>{{ disciplina.nome }}</td>
+              <td>{{ disciplina.horas }}</td>
+              <td>{{ disciplina.semestre }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
